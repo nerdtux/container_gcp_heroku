@@ -23,5 +23,15 @@ Execute o aplicativo
 Abra o browser de internet e digite http://localhost:5000.
 Deverá aparecer o valor da variável "SERVICE"
 
+# 3. Instalar o Heroku CLI
+
+Instale o Heroku CLI para Ubuntu através do comando
+`sudo snap install --classic heroku`
+
+Verifique sua instalação
+`heroku --version`
+
+# Colar imagem do código acima
+
 
 
