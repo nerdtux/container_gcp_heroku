@@ -1,0 +1,38 @@
+version: "3.9"
+  
+networks:
+  desafio_net:
+
+services:
+  nginx:
+    image: nginx:1.21.3-alpine
+    restart: always
+    ports: 
+      - 80:80
+    networks:
+      - desafio_net 
+    volumes:
+      - ./desafio2/lb.conf:/etc/nginx/conf.d/default.conf
+      - /dev/null:/etc/nginx/sites-enabled/default  
+    environment:
+      NGINX_HOST: 80
+  
+  python1:
+    build: ./desafio2/
+    #    ports: 
+    #      - 5000:5000
+    restart: always
+    networks:
+      - desafio_net
+    environment:
+      SERVICE: Serviço A
+    
+  python2:
+    build: ./desafio2/
+    #    ports: 
+    #      - 5000:5000
+    restart: always
+    networks:
+      - desafio_net
+    environment:
+      SERVICE: Serviço B
