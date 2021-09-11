@@ -121,3 +121,34 @@ Faça o teste abrindo o link que retornar como resultado.
 
 No meu caso o link é [esse](https://servico-4mzy6cfcfa-ue.a.run.app).
 
+# DESAFIO 2
+
+### Criar a VM na GCP
+`gcloud compute instances create vm-kyros --image=ubuntu-2004-focal-v20210908 --image-project=ubuntu-os-cloud --machine-type=f1-micro --zone=us-east1-b
+`
+### Anotar os dados retornados ao fim do comando
+IMAGEM 10
+
+### Ativar o Login do SO
+`cloud compute project-info add-metadata --metadata enable-oslogin=TRUE`
+
+### Copiar chave ssh
+`gcloud compute os-login ssh-keys add --key-file=PATH/id_rsa.pub --ttl=<tempo>`
+
+### Verificar username para conectarmos via ssh
+`gcloud compute os-login describe-profile`
+
+### Conectar via ssh em nossa VM
+`ssh usernamer@IP_EXTERNO_VM`
+
+### Atualizar o Sistema Operacional
+`sudo apt update && sudo apt upgrade -y`
+
+### Instalar o Docker
+`sudo apt-get install apt-transport-https ca-certificates \
+            curl gnupg lsb-release`
+
+### Copiar o repositório git do desafio
+`git clone https://github.com/nerdtux/container_gcp_heroku.git`
+
+
