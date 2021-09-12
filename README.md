@@ -11,7 +11,8 @@ Baixe os arquivos necessários \
 Para executar em ambiente virtual recomenda-se instalar o Pipenv
 
 ### 1. Instalar Pipenv
-`pip install --user pipx` \
+`pip install --user pipx`
+
 `pipx install pipenv`
 
 Para instalar os requerimentos digite \
@@ -78,7 +79,7 @@ Deploy manual
 
 
 Link para validar o resultado da aplicação no Heroku
-<https://young-atoll-27478.herokuapp.com/>
+<https://guarded-sierra-31421.herokuapp.com/>
 
 # Realizar o deploy usando Cloud Run da Google Cloud
 
@@ -86,44 +87,44 @@ Requisitos:
 - Conta Google Cloud
 - Gcloud instalado - veja como instalar [aqui](https://cloud.google.com/sdk/docs/install#deb)
 
-### Autenticação no gcloud \
+### Autenticação no gcloud
 `gcloud auth login`
 
-### Criando um projeto novo \
+### Criando um projeto novo 
 `gcloud projects create nomedoprojeto`
 
-### Para verificar seu PROJECT_ID \
+### Para verificar seu PROJECT_ID
 `gcloud projects list`
 
-### Defina seu projeto como padrão \
+### Defina seu projeto como padrão
 `gcloud config set project PROJECT_ID`
 
-### Execute o comando abaixo para obter o BILLING ACCOUNT ID \
+### Execute o comando abaixo para obter o BILLING ACCOUNT ID
 `gcloud alpha billing accounts list`
 
-### Defina uma conta de pagamentos ao projeto criado \
+### Defina uma conta de pagamentos ao projeto criado
 `glcloud alpha billing projects link PROJECT_ID --billing-account 0X0X0X-0X0X0X-0X0X0X`
 
-### Crie uma Conta de serviços \
+### Crie uma Conta de serviços
 `gcloud iam service-accounts create nomedacontadeservicos`
 
-### Dê permissão para que a conta de serviços criada gerencie os recursos do projeto \
+### Dê permissão para que a conta de serviços criada gerencie os recursos do projeto
 `gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:nomedacontadeservicos@PROJECT_ID.iam.gserviceaccount.com" --roles="roles/editor"`
 
-### Compile a imagem de conteiner usando o Cloud Build \
+### Compile a imagem de conteiner usando o Cloud Build
 `gcloud builds submit --tag gcr.io/PROJECT_ID/nomedoconteiner`
 
-### Realize o deploy \
+### Realize o deploy
 `gcloud run deploy --image gcr.io/PROJECT_ID/nomedoconteiner --platform managed`
 
-Se for solicitada a ativação da API, responda y. \
-O nome do serviço será solicitado: pressione Enter para aceitar o padrão. \
-Você deverá selecionar a região quando solicitado. \
-Responda y quando receber solicitação para Allow unauthenticated invocations.
+- Se for solicitada a ativação da API, responda y. \
+- O nome do serviço será solicitado: pressione Enter para aceitar o padrão. \
+- Você deverá selecionar a região quando solicitado. \
+- Responda y quando receber solicitação para Allow unauthenticated invocations.
 
 Faça o teste abrindo o link que retornar como resultado.
 
-No meu caso o link é [esse](https://servico-4mzy6cfcfa-ue.a.run.app).
+No meu caso o link é [esse](https://kyros-4mzy6cfcfa-ue.a.run.app/).
 
 # DESAFIO 2
 
@@ -149,16 +150,14 @@ IMAGEM 10
 `sudo apt update && sudo apt upgrade -y`
 
 ### Instalar o Docker
-`sudo apt-get install apt-transport-https ca-certificates \
-            curl gnupg lsb-release`
+`sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release`
 
-` curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
+`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
 
-`echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
+`echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
 
 `sudo apt-get update`
+
 `sudo apt-get install docker-ce docker-ce-cli containerd.io`
 
 ### Copiar o repositório git do desafio
@@ -168,14 +167,18 @@ IMAGEM 10
 `cd container_gcp_heroku`
 
 ### Instalando Docker-Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
+`sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" \
+-o /usr/local/bin/docker-compose`
+
+`sudo chmod +x /usr/local/bin/docker-compose`
+
+`docker-compose --version`
 
 ### Execute o Docker-Compose
 `docker-compose up -d`
 
 Digite o ip externo da VM no browser de internet.
+<http://34.73.193.35>
 
 ### Para finalizar os containers use o comando
 `docker-compose down`
