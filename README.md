@@ -50,7 +50,7 @@ Confira o nome do app criado \
 
 
 Configure a stack do app para container \
-`herouku stack:set container`
+`heroku stack:set container`
 
 Entre no seu portal Heroku e clique no app criado anteriormente
 ![image](https://user-images.githubusercontent.com/84750652/132788900-8c278cf5-a7a7-43ab-ab6a-0853359a9607.png)
@@ -73,8 +73,12 @@ Para finalizar a configuração da pipeline vamos conectar novamente ao GitHub
 ![image](https://user-images.githubusercontent.com/84750652/132789145-050dbacb-c58a-4095-b995-dddb060bc433.png)
 ![image](https://user-images.githubusercontent.com/84750652/132789184-e637d52d-74ec-4ff7-91ab-e317cbfc024b.png)
 
+Deploy manual
+![image](https://user-images.githubusercontent.com/84750652/132996464-2c38e0e6-387e-44d9-aa25-e29ccbfadc60.png)
+
+
 Link para validar o resultado da aplicação no Heroku
-<https://sleepy-crag-40442.herokuapp.com/>
+<https://young-atoll-27478.herokuapp.com/>
 
 # Realizar o deploy usando Cloud Run da Google Cloud
 
@@ -130,7 +134,7 @@ No meu caso o link é [esse](https://servico-4mzy6cfcfa-ue.a.run.app).
 IMAGEM 10
 
 ### Ativar o Login do SO
-`cloud compute project-info add-metadata --metadata enable-oslogin=TRUE`
+`gcloud compute project-info add-metadata --metadata enable-oslogin=TRUE`
 
 ### Copiar chave ssh
 `gcloud compute os-login ssh-keys add --key-file=PATH/id_rsa.pub --ttl=<tempo>`
